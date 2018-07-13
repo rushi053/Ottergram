@@ -6,14 +6,14 @@ var HIDDEN_DETAIL_CLASS = 'hidden-detail';
 var TINY_EFFECT_CLASS = 'is-tiny';
 var ESC_KEY = 27;
 var currentslide = 0;
-var detailImage =document.querySelector(DETAIL_IMAGE_SELECTOR);
+var detailImage = document.querySelector(DETAIL_IMAGE_SELECTOR);
 
 function setDetails(imageUrl, titleText, id) {
   'use strict';
 
   var detailImage = document.querySelector(DETAIL_IMAGE_SELECTOR);
   detailImage.setAttribute('src', imageUrl);
-  detailImage.setAttribute('id',id);
+  detailImage.setAttribute('id', id);
 
   var detailTitle = document.querySelector(DETAIL_TITLE_SELECTOR);
   detailTitle.textContent = titleText;
@@ -35,7 +35,7 @@ function setDetailsFromThumb(thumbnail) {
 }
 
 function addThumbClickHandler(thumb) {
-  thumb.addEventListener('click', function (event) {
+  thumb.addEventListener('click', function(event) {
     event.preventDefault();
     setDetailsFromThumb(thumb);
     showDetails();
@@ -59,7 +59,7 @@ function showDetails() {
   var frame = document.querySelector(DETAIL_FRAME_SELECTOR);
   document.body.classList.remove(HIDDEN_DETAIL_CLASS);
   frame.classList.add(TINY_EFFECT_CLASS);
-  setTimeout(function () {
+  setTimeout(function() {
     frame.classList.remove(TINY_EFFECT_CLASS);
   }, 50);
 }
@@ -88,20 +88,20 @@ function initializeEvents() {
 }
 
 function previous() {
-  var a =(detailImage.getAttribute('id'));
+  var a = (detailImage.getAttribute('id'));
   currentslide = Number(a);
   slide(currentslide - 1);
 }
 
 function next() {
-  var a =(detailImage.getAttribute('id'));
+  var a = (detailImage.getAttribute('id'));
   currentslide = Number(a);
   slide(currentslide + 1);
 }
 
 function slide(n) {
-  var thumb =getThumbnailsArray();
-  currentslide = (n +thumb.length) % thumb.length;
+  var thumb = getThumbnailsArray();
+  currentslide = (n + thumb.length) % thumb.length;
   setDetailsFromThumb(thumb[currentslide]);
 }
 
