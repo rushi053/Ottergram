@@ -1,1 +1,2 @@
-# homework-2
+Ottergram
+- javascript , CSS , HTML 
